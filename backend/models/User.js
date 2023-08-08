@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 
+//since we need to get data from user into our auth app, we need the following line
+const { Schema } = mongoose;
+
 const UserSchema = new Schema({
     name:{
         type: String,
