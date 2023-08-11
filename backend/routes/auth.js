@@ -4,9 +4,12 @@ const User = require('../models/User');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs'); //for password hashing
 const jwt = require('jsonwebtoken')
+const fetchuser = require('../middleware/fetchuser');
+
 
 const JWT_SECRET = 'jaeisagood$boy'; //we will sign our web token with this secret string...ideally it should be in an env file
 
+//ROUTE 1 : CREATE USER
 //Create a User using POST ".api/auth/createUser". No login required
 router.post('/createuser', [
   body('name').isLength({ min: 3 }),
@@ -37,9 +40,10 @@ router.post('/createuser', [
 
     await newUser.save();
 
+    //CHANGES
     const data = {
       user:{
-        id: User.id
+        id: newUser.id
       }
     }
     //sign method jwt
@@ -47,6 +51,7 @@ router.post('/createuser', [
     // console.log(authtoken);
 
     res.json({ message: 'User created successfully', authtoken });
+    // res.send(User);
   } catch (error) {
 
     console.error(error);
@@ -55,7 +60,7 @@ router.post('/createuser', [
 });
 
 
-
+//ROUTE 2: USER LOGIN
 //Authenticate a User //POST "/api/auth/login" . No login required
 router.post('/login', [
   // body('name').isLength({ min: 3 }),
@@ -84,9 +89,10 @@ router.post('/login', [
       return res.status(400).json({error: "Invalid credentials"});
     }
 
+    //CHANGES
     const data = {
       user:{
-        id: User.id
+        id: user.id
       }
     }
 
@@ -98,6 +104,24 @@ router.post('/login', [
     console.error(error);
     res.status(500).send('Server Error');
   }
+});
+
+
+//ROUTE 3: DEATAILS OF LOGGED IN USER
+//POST "/api/auth/getuser" . Login Required
+
+router.post('/getuser', fetchuser, async (req, res) => {
+try {
+  userId = req.user.id;
+  const user = await User.findById(userId).select("-password");
+  res.send(user);
+  console.log('User:', user);
+  
+ } catch (error) {
+  console.error(error);
+  res.status(500).send('Server Error');
+  
+ }
 });
 
 module.exports = router;
