@@ -32,14 +32,7 @@ router.post('/createuser', [
     const secPass = await bcrypt.hash(req.body.password, salt);
 
     // Create and save the new user
-    // const newUser = new User({ name, email, password });
     const newUser = new User({ name, email, password: secPass });
-
-    // const newUser = await User.create({
-    //   name: req.body.name,
-    //   password: secPass,
-    //   email: req.body.email,
-    // })
 
 
     await newUser.save();
@@ -56,6 +49,52 @@ router.post('/createuser', [
     res.json({ message: 'User created successfully', authtoken });
   } catch (error) {
 
+    console.error(error);
+    res.status(500).send('Server Error');
+  }
+});
+
+
+
+//Authenticate a User //POST "/api/auth/login" . No login required
+router.post('/login', [
+  // body('name').isLength({ min: 3 }),
+  body('email', 'Enter a valid email').isEmail(),
+  body('password', 'Password cannot be blank').exists()
+], async (req, res) => {
+  
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  //destructuring
+  const {email, password} = req.body;
+  
+  try {
+    let user = await User.findOne({email});
+
+    if(!user){
+      return res.status(400).json({error: "Invalid credentials"});
+    }
+
+    const passwordCompare = await bcrypt.compare(password, user.password);
+    if(!passwordCompare){
+      //password doesn't match
+      return res.status(400).json({error: "Invalid credentials"});
+    }
+
+    const data = {
+      user:{
+        id: User.id
+      }
+    }
+
+    const authtoken = jwt.sign(data, JWT_SECRET);
+    res.json({ message: 'Logged in successfully', authtoken });
+
+    
+  } catch (error) {
     console.error(error);
     res.status(500).send('Server Error');
   }
