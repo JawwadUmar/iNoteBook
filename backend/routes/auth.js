@@ -3,6 +3,9 @@ const router = express.Router();
 const User = require('../models/User');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs'); //for password hashing
+const jwt = require('jsonwebtoken')
+
+const JWT_SECRET = 'jaeisagood$boy'; //we will sign our web token with this secret string...ideally it should be in an env file
 
 //Create a User using POST ".api/auth/createUser". No login required
 router.post('/createuser', [
@@ -41,8 +44,18 @@ router.post('/createuser', [
 
     await newUser.save();
 
-    res.send({ message: 'User created successfully' });
+    const data = {
+      user:{
+        id: User.id
+      }
+    }
+    //sign method jwt
+    const authtoken = jwt.sign(data, JWT_SECRET);
+    // console.log(authtoken);
+
+    res.json({ message: 'User created successfully', authtoken });
   } catch (error) {
+
     console.error(error);
     res.status(500).send('Server Error');
   }
