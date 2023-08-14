@@ -6,6 +6,7 @@ import NoteState from './context/notes/NoteState';
 
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Alert from './components/Alert';
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
     <BrowserRouter>
 
     <Navbar/>
-
+    <Alert message = "This is your note"/>
     <div className='container'>
 
     <Routes>
