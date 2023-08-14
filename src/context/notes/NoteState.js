@@ -17,12 +17,75 @@ const NoteState =(props) =>{
             {
               "_id": "64d945ca28c5d0f615152c84",
               "user": "64d64728ccc7d2c687b97c2b",
-              "title": "We are working with this note",
+              "title": "This is second note man",
               "description": "let's try and find",
               "tag": "there is no tag",
               "date": "2023-08-13T21:06:18.131Z",
               "__v": 0
-            }
+            },
+            {
+              "_id": "64d945ca28c5d0f615152c84",
+              "user": "64d64728ccc7d2c687b97c2b",
+              "title": "Why are you like this",
+              "description": "let's try and find",
+              "tag": "there is no tag",
+              "date": "2023-08-13T21:06:18.131Z",
+              "__v": 0
+            },
+            {
+              "_id": "64d945ca28c5d0f615152c84",
+              "user": "64d64728ccc7d2c687b97c2b",
+              "title": "Why are you like this",
+              "description": "let's try and find",
+              "tag": "there is no tag",
+              "date": "2023-08-13T21:06:18.131Z",
+              "__v": 0
+            },
+            {
+              "_id": "64d945ca28c5d0f615152c84",
+              "user": "64d64728ccc7d2c687b97c2b",
+              "title": "Why are you like this",
+              "description": "let's try and find",
+              "tag": "there is no tag",
+              "date": "2023-08-13T21:06:18.131Z",
+              "__v": 0
+            },
+            {
+              "_id": "64d945ca28c5d0f615152c84",
+              "user": "64d64728ccc7d2c687b97c2b",
+              "title": "Why are you like this",
+              "description": "let's try and find",
+              "tag": "there is no tag",
+              "date": "2023-08-13T21:06:18.131Z",
+              "__v": 0
+            },
+            {
+              "_id": "64d945ca28c5d0f615152c84",
+              "user": "64d64728ccc7d2c687b97c2b",
+              "title": "Why are you like this",
+              "description": "let's try and find",
+              "tag": "there is no tag",
+              "date": "2023-08-13T21:06:18.131Z",
+              "__v": 0
+            },
+            {
+              "_id": "64d945ca28c5d0f615152c84",
+              "user": "64d64728ccc7d2c687b97c2b",
+              "title": "Why are you like this",
+              "description": "let's try and find",
+              "tag": "there is no tag",
+              "date": "2023-08-13T21:06:18.131Z",
+              "__v": 0
+            },
+            {
+              "_id": "64d945ca28c5d0f615152c84",
+              "user": "64d64728ccc7d2c687b97c2b",
+              "title": "Why are you like this",
+              "description": "let's try and find",
+              "tag": "there is no tag",
+              "date": "2023-08-13T21:06:18.131Z",
+              "__v": 0
+            },
           ]
     
 
