@@ -39,21 +39,10 @@ const NoteState = (props) => {
       body: JSON.stringify({title, description, tag}), //ERROR HERE
     });
 
-    const json = await response.json();
-    console.log(json);
-
-    console.log("Adding a new Note");
-    const note = {
-      _id: "64d945ca28c5d0fefefef615152c84",
-      user: "64d64728ccc7d2c687b97c2b",
-      title: title,
-      description: description,
-      tag: tag,
-      date: "2023-08-13T21:06:18.131Z",
-      __v: 0,
-    };
-
+    const note = await response.json();
     setNotes(notes.concat(note));
+    console.log("Adding a new Note");
+    
   }
 
   //DELETE A NOTE
