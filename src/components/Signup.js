@@ -38,8 +38,8 @@ const onChange = (e) => {
   }
 
   return (
-    <div className='container'>
-
+    <div className='container mt-2'>
+<h2 className='my-2'>Sign up to start using iNoteBook</h2>
 <form onSubmit={handleSubmit}>
   <div className="mb-3">
     <label htmlFor="name" className="form-label">Your Name</label>
@@ -62,7 +62,7 @@ const onChange = (e) => {
     <input type="password" className="form-control" name='cpassword' id="cpassword" minLength={5} required/>
   </div>
 
-  <button type="submit" className="btn btn-primary">Submit</button>
+  <button type="submit" className="btn btn-primary">Create Account</button>
 </form>
 
 
